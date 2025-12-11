@@ -30,7 +30,7 @@
 						"referenceName": "HW_Agent_Dataset",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": true
+					"firstRowOnly": false
 				}
 			},
 			{
