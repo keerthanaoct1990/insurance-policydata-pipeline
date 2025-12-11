@@ -1,0 +1,29 @@
+{
+	"name": "HW_Agent_Dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLs_Linkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "HighWaterMark_Agent.txt",
+				"folderPath": "AgentData",
+				"fileSystem": "landing"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "1900-01-01 00:00:00",
+				"type": "String"
+			}
+		]
+	}
+}
