@@ -14,7 +14,8 @@
 				"folderPath": "AgentData",
 				"fileSystem": "landing"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "",
+			"rowDelimiter": "",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
