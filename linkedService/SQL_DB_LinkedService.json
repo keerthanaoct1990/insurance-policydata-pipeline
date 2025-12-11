@@ -1,0 +1,17 @@
+{
+	"name": "SQL_DB_LinkedService",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "aviva-policy-sql-sever.database.windows.net",
+			"database": "aviva-policy-db",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "avivaadmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEJFMDA2MzQ2LTQxMUQtNDc0MC1CMENELUJBODBDM0UzOUQ3Rl9lMWE3OGQzYy05ODhlLTQ2YjktOTcxNi0yMjYxYmM2YTliYmQiDQp9"
+		}
+	}
+}
