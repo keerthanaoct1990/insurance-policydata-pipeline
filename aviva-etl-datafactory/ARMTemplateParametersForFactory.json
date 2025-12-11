@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "aviva-etl-datafactory"
+		},
+		"SQL_DB_LinkedService_password": {
+			"value": ""
+		},
+		"ADLs_Linkedservice_accountKey": {
+			"value": ""
+		},
+		"SQL_DB_LinkedService_properties_typeProperties_server": {
+			"value": "aviva-policy-sql-sever.database.windows.net"
+		},
+		"SQL_DB_LinkedService_properties_typeProperties_database": {
+			"value": "aviva-policy-db"
+		},
+		"SQL_DB_LinkedService_properties_typeProperties_userName": {
+			"value": "avivaadmin"
+		},
+		"ADLs_Linkedservice_properties_typeProperties_url": {
+			"value": "https://avivainsurancestorage.dfs.core.windows.net/"
+		}
+	}
+}
