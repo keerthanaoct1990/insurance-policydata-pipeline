@@ -88,7 +88,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT * FROM dbo.Agent WHERE create_timestamp> '@{activity('Get HW for Agent').output.value.Prop_0}' AND create_timestamp <= '@{activity('Get Last updated date from Agent table').output.firstRow.Max_Date}'",
+							"value": "SELECT * FROM dbo.Agent WHERE create_timestamp> '@{activity('Get HW for Agent').output.firstRow.Prop_0}' AND create_timestamp <= '@{activity('Get Last updated date from Agent table').output.firstRow.Max_Date}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
