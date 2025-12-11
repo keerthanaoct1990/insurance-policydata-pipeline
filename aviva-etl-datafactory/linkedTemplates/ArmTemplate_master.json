@@ -7,13 +7,17 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "aviva-etl-datafactory"
 		},
+		"ADLs_Linkedservice_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLs_Linkedservice'"
+		},
 		"SQL_DB_LinkedService_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SQL_DB_LinkedService'"
 		},
-		"ADLs_Linkedservice_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'ADLs_Linkedservice'"
+		"ADLs_Linkedservice_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://avivainsurancestorage.dfs.core.windows.net/"
 		},
 		"SQL_DB_LinkedService_properties_typeProperties_server": {
 			"type": "string",
@@ -26,10 +30,6 @@
 		"SQL_DB_LinkedService_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "avivaadmin"
-		},
-		"ADLs_Linkedservice_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://avivainsurancestorage.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -58,11 +58,14 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"ADLs_Linkedservice_accountKey": {
+						"value": "[parameters('ADLs_Linkedservice_accountKey')]"
+					},
 					"SQL_DB_LinkedService_password": {
 						"value": "[parameters('SQL_DB_LinkedService_password')]"
 					},
-					"ADLs_Linkedservice_accountKey": {
-						"value": "[parameters('ADLs_Linkedservice_accountKey')]"
+					"ADLs_Linkedservice_properties_typeProperties_url": {
+						"value": "[parameters('ADLs_Linkedservice_properties_typeProperties_url')]"
 					},
 					"SQL_DB_LinkedService_properties_typeProperties_server": {
 						"value": "[parameters('SQL_DB_LinkedService_properties_typeProperties_server')]"
@@ -72,9 +75,6 @@
 					},
 					"SQL_DB_LinkedService_properties_typeProperties_userName": {
 						"value": "[parameters('SQL_DB_LinkedService_properties_typeProperties_userName')]"
-					},
-					"ADLs_Linkedservice_properties_typeProperties_url": {
-						"value": "[parameters('ADLs_Linkedservice_properties_typeProperties_url')]"
 					}
 				}
 			},
