@@ -9,6 +9,12 @@
 					"referenceName": "sql_db_agent_adls_incremental",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "sql_db_claim_incremental",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
