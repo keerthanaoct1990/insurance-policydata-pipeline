@@ -155,6 +155,35 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/HW_Claim_Dataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ADLs_Linkedservice",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "HighWaterMark_Claim-mQ1qBUXqgw.txt",
+						"folderPath": "ClaimData",
+						"fileSystem": "landing"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ADLs_Linkedservice')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Parquet_Branch_Dataset')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -212,35 +241,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/SQL_DB_LinkedService')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/HW_Claim_Dataset')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ADLs_Linkedservice",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "HighWaterMark_Claim-mQ1qBUXqgw.txt",
-						"folderPath": "ClaimData",
-						"fileSystem": "landing"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": false,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ADLs_Linkedservice')]"
 			]
 		},
 		{
@@ -735,6 +735,60 @@
 				"[concat(variables('factoryId'), '/datasets/HW_Claim_Dataset')]",
 				"[concat(variables('factoryId'), '/datasets/SQL_Dataset')]",
 				"[concat(variables('factoryId'), '/datasets/Generic_Dataset')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/daily_once_at_12AM')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "sql_db_agent_adls_incremental",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "sql_db_claim_incremental",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "sql_db_branch_adls",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2025-12-23T17:50:00",
+						"timeZone": "Eastern Standard Time",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								0
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/sql_db_agent_adls_incremental')]",
+				"[concat(variables('factoryId'), '/pipelines/sql_db_claim_incremental')]",
+				"[concat(variables('factoryId'), '/pipelines/sql_db_branch_adls')]"
 			]
 		}
 	]
