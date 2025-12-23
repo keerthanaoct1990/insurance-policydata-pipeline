@@ -11,6 +11,9 @@
 		"SQL_DB_LinkedService_password": {
 			"value": ""
 		},
+		"AzureDatabricks_ls_accessToken": {
+			"value": ""
+		},
 		"ADLs_Linkedservice_properties_typeProperties_url": {
 			"value": "https://avivainsurancestorage.dfs.core.windows.net/"
 		},

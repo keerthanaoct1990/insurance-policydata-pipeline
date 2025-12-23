@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SQL_DB_LinkedService'"
 		},
+		"AzureDatabricks_ls_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks_ls'"
+		},
 		"ADLs_Linkedservice_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://avivainsurancestorage.dfs.core.windows.net/"
@@ -63,6 +67,9 @@
 					},
 					"SQL_DB_LinkedService_password": {
 						"value": "[parameters('SQL_DB_LinkedService_password')]"
+					},
+					"AzureDatabricks_ls_accessToken": {
+						"value": "[parameters('AzureDatabricks_ls_accessToken')]"
 					},
 					"ADLs_Linkedservice_properties_typeProperties_url": {
 						"value": "[parameters('ADLs_Linkedservice_properties_typeProperties_url')]"
