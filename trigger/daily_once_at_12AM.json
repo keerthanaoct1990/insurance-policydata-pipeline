@@ -15,6 +15,12 @@
 					"referenceName": "sql_db_claim_incremental",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "sql_db_branch_adls",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
